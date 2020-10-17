@@ -9,6 +9,7 @@ let randomNum = Math.floor(Math.random() * 100) + 1;
 console.log(randomNum);
 
 let guesses = new Array();
+let count = 0;
 
 init();
 function init() {
@@ -20,8 +21,15 @@ function init() {
 
 function checkAnswer() {
   let guess = Number(inputText.value);
+  count++;
   
-  if (guess === randomNum) {
+  if (count === 10 && guess != randomNum) {
+    resultMsg.innerHTML = '!!!GAME OVER!!!';
+    resultMsg.style.backgroundColor = 'black';
+    lowOrHigh.innerHTML = '';
+
+    submitBtn.disabled = true;
+  } else if (guess === randomNum) {
     //success
     resultMsg.innerHTML = 'Congratulations! You got it right!';
     resultMsg.style.backgroundColor = 'mediumseagreen';
