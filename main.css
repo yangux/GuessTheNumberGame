@@ -4,3 +4,7 @@ body {
   padding: 20px 10px;
   border-top: 5px solid mediumseagreen;
 }
+#resultMsg {
+  padding: 4px 8px;
+  color: white;
+}
