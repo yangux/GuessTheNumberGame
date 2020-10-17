@@ -34,6 +34,8 @@ function checkAnswer() {
     resultMsg.innerHTML = 'Congratulations! You got it right!';
     resultMsg.style.backgroundColor = 'mediumseagreen';
     lowOrHigh.innerHTML = '';
+
+    submitBtn.disabled = true;
   } else {
     guesses.push(' ' + guess);
     preGuesses.innerHTML = 'Previous guesses: ';
