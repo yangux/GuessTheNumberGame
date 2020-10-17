@@ -4,6 +4,24 @@ body {
   padding: 20px 10px;
   border-top: 5px solid mediumseagreen;
 }
+button {
+  outline: none;
+  border: 1px solid lightseagreen;
+  border-radius: 3px;
+  padding: 3px 6px;
+  background-color: transparent;
+  color: lightseagreen;
+  cursor: pointer;
+}
+button:hover {
+  border-color: mediumaquamarine;
+  color: mediumaquamarine; 
+}
+button:disabled {
+  border-color: #bbb;
+  color: #bbb;
+  cursor: auto;
+}
 #resultMsg {
   padding: 4px 8px;
   color: white;

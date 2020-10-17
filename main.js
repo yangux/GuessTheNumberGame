@@ -6,7 +6,6 @@ const lowOrHigh = document.getElementById('lowOrHigh');
 const replayBtn = document.getElementById('replayBtn');
 
 let randomNum = Math.floor(Math.random() * 100) + 1;
-console.log(randomNum);
 
 let guesses = new Array();
 let count = 0;
@@ -57,6 +56,7 @@ function replay() {
   randomNum = Math.floor(Math.random() * 100) + 1;
   count = 0;
   guesses = [];
+  inputText.value = '';
   submitBtn.disabled = false;
   preGuesses.innerHTML = '';
   resultMsg.innerHTML = '';
