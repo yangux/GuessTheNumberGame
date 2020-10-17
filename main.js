@@ -52,5 +52,12 @@ function checkAnswer() {
 }
 
 function replay() {
-
+  randomNum = Math.floor(Math.random() * 100) + 1;
+  count = 0;
+  guesses = [];
+  submitBtn.disabled = false;
+  preGuesses.innerHTML = '';
+  resultMsg.innerHTML = '';
+  resultMsg.style.backgroundColor = 'transparent';
+  lowOrHigh.innerHTML = '';
 }
