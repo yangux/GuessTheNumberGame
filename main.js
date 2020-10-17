@@ -19,10 +19,13 @@ function init() {
 }
 
 function checkAnswer() {
-  let guess = Number(inputText.value);
   count++;
-  
-  if (count === 10 && guess != randomNum) {
+
+  let guess = Number(inputText.value);
+  if (isNaN(guess) || guess <= 0 || guess > 100) {
+    alert('Enter the number between 1 and 100.');
+    count -= 1;
+  } else if (count === 10 && guess != randomNum) {
     resultMsg.innerHTML = '!!!GAME OVER!!!';
     resultMsg.style.backgroundColor = 'black';
     lowOrHigh.innerHTML = '';
@@ -50,6 +53,7 @@ function checkAnswer() {
     }
   }  
   inputText.value = '';
+  console.log(count);
 }
 
 function replay() {
