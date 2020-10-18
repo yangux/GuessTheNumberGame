@@ -3,7 +3,7 @@ const submitBtn = document.getElementById('submitBtn');
 const preGuesses = document.getElementById('preGuesses');
 const resultMsg = document.getElementById('resultMsg');
 const lowOrHigh = document.getElementById('lowOrHigh');
-const replayBtn = document.getElementById('replayBtn');
+let replayBtn;
 
 let randomNum = Math.floor(Math.random() * 100) + 1;
 
@@ -13,9 +13,9 @@ let count = 0;
 init();
 function init() {
   submitBtn.addEventListener('click', checkAnswer);
-  replayBtn.addEventListener('click', replay);
 
   inputText.value = '';
+  inputText.focus();
 }
 
 function checkAnswer() {
@@ -29,15 +29,13 @@ function checkAnswer() {
     resultMsg.innerHTML = '!!!GAME OVER!!!';
     resultMsg.style.backgroundColor = 'black';
     lowOrHigh.innerHTML = '';
-
-    submitBtn.disabled = true;
+    setGameOver();
   } else if (guess === randomNum) {
     //success
     resultMsg.innerHTML = 'Congratulations! You got it right!';
     resultMsg.style.backgroundColor = 'mediumseagreen';
     lowOrHigh.innerHTML = '';
-
-    submitBtn.disabled = true;
+    setGameOver();
   } else {
     guesses.push(' ' + guess);
     preGuesses.innerHTML = 'Previous guesses: ';
@@ -53,7 +51,16 @@ function checkAnswer() {
     }
   }  
   inputText.value = '';
-  console.log(count);
+  inputText.focus();
+}
+
+function setGameOver() {
+  inputText.disabled = true;
+  submitBtn.disabled = true;
+  replayBtn = document.createElement('button');
+  replayBtn.textContent = 'Start new game';
+  document.body.append(replayBtn);
+  replayBtn.addEventListener('click', replay);
 }
 
 function replay() {
@@ -61,9 +68,12 @@ function replay() {
   count = 0;
   guesses = [];
   inputText.value = '';
+  inputText.focus();
+  inputText.disabled = false;
   submitBtn.disabled = false;
   preGuesses.innerHTML = '';
   resultMsg.innerHTML = '';
   resultMsg.style.backgroundColor = 'transparent';
   lowOrHigh.innerHTML = '';
+  replayBtn.parentNode.removeChild(replayBtn);
 }
